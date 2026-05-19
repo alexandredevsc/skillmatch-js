@@ -12,5 +12,21 @@ const candidato = {
     experienciaMeses: 4,
 };
 
+// ── RF09 ─ CLASSE BASE ──────────────────────────────────────
+class vaga {
+    constructor(id, empresa, cargo, requisitos, salario, modalidade){
+        this.id = id;
+        this.empresa = empresa;
+        this.cargo = cargo;
+        this.requisitos = requisitos;
+        this.salario = salario;
+        this.modalidade = modalidade;
+    }
+
+    exibirResumo(){
+        return `[${this.modalidade}] ${this.cargo} na ${this.empresa} - R$ ${this.salario.toLocaleString('pt-BR')}/mês`;
+    }
+}
+
 
   
