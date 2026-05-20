@@ -28,5 +28,19 @@ class vaga {
   }
 }
 
+// ── RF10 ─ HERANÇA ──────────────────────────────────────────
+class VagaFrontEnd extends Vaga {
+  constructor(id, empresa, cargo, requisitos, salario, modalidade, nivel) {
+    super(id, empresa, cargo, requisitos, salario, modalidade);
+    this.nivel = nivel;
+  }
+  exibirNivel() {
+    return `Nível da vaga: ${this.nivel}`;
+  }
+  exibirResumo() {
+    return `${super.exibirResumo()} | ${this.exibirNivel()}`;
+  }
+}
+
 
   
