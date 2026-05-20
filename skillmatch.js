@@ -145,3 +145,31 @@ async function iniciarSistema() {
   const resultados  = analisarTodasAsVagas(candidato, vagasCarregadas);
   const melhorVaga  = encontrarMelhorVaga(resultados);
   const recomendacao = gerarRecomendacao(resultados);
+
+  // RF08 — find: busca vaga por ID
+  const vagaEspecifica = vagasCarregadas.find((v) => v.id === 1);
+  console.log("🔍 Vaga encontrada pelo ID 1:", vagaEspecifica.exibirResumo());
+
+  console.log("\n" + "=".repeat(60));
+  console.log(`🧑‍💻 CANDIDATO: ${candidato.nome}`);
+  console.log(`📌 Área: ${candidato.area} | Experiência: ${candidato.experienciaMeses} meses`);
+  console.log(`🛠️  Habilidades: ${candidato.habilidades.join(", ")}`);
+  console.log("=".repeat(60));
+
+  resultados.forEach((r) => {
+    console.log(`\n📋 ${r.vaga.empresa} — ${r.vaga.cargo}`);
+    console.log(`   Modalidade: ${r.vaga.modalidade} | Salário: R$ ${r.vaga.salario.toLocaleString("pt-BR")}`);
+    console.log(`   Compatibilidade: ${r.percentual}%  ${r.classificacao}`);
+    console.log(`   ✅ Encontradas: ${r.encontradas.length > 0 ? r.encontradas.join(", ") : "Nenhuma"}`);
+    console.log(`   ❌ Faltantes:   ${r.faltantes.length > 0 ? r.faltantes.join(", ") : "Nenhuma"}`);
+    console.log(`   Atende 100%: ${r.atendeTotal ? "Sim 🎉" : "Não"}`);
+  });
+
+  console.log("\n" + "=".repeat(60));
+  console.log("🏆 VAGA MAIS COMPATÍVEL:");
+  console.log(`   ${melhorVaga.vaga.empresa} — ${melhorVaga.vaga.cargo}`);
+  console.log(`   Compatibilidade: ${melhorVaga.percentual}%`);
+
+  console.log("\n📚 RECOMENDAÇÃO DE ESTUDO:");
+  console.log(`   ${recomendacao}`);
+  console.log("=".repeat(60));
