@@ -132,3 +132,12 @@ function gerarRecomendacao(resultados) {
   }
   return `Priorize estudar: <strong>${unicas.join(", ")}</strong>. Esses conteúdos aparecem nas vagas analisadas.`;
 }
+
+/**
+ * RF14 — Promise simulada (imita busca em servidor)
+ */
+function buscarVagasSimuladas() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(vagasBase), 1200);
+  });
+}
