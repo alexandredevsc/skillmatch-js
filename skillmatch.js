@@ -98,3 +98,10 @@ function analisarTodasAsVagas(candidatoObj, listaVagas) {
     return { vaga, percentual, encontradas, faltantes, classificacao, atendeTotal };
   });
 }
+
+// RF06 — reduce: melhor vaga
+function encontrarMelhorVaga(resultados) {
+  return resultados.reduce((melhor, atual) =>
+    atual.percentual > melhor.percentual ? atual : melhor
+  );
+}
