@@ -70,3 +70,9 @@ function habilidadesFaltantes(habilidades, requisitos) {
   const normalizadas = habilidades.map((h) => h.toLowerCase().trim());
   return requisitos.filter((r) => !normalizadas.includes(r.toLowerCase()));
 }
+
+// RF03 — cálculo do percentual
+function calcularCompatibilidade(habilidades, requisitos) {
+  const atendidos = habilidadesEncontradas(habilidades, requisitos).length;
+  return Math.round((atendidos / requisitos.length) * 100);
+}
