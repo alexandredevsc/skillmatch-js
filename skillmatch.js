@@ -118,3 +118,14 @@ function gerarRecomendacao(resultados) {
   }
   return `Priorize estudar: ${todasFaltantes.join(", ")}. Esses conteúdos aparecem nas vagas analisadas.`;
 }
+
+// ── RF12 ─ CALLBACK ──────────────────────────────────────────
+function finalizarAnalise(nomeCandidato, callback) {
+  console.log("\n✅ Análise finalizada para:", nomeCandidato);
+  callback(nomeCandidato);
+}
+
+function exibirMensagemFinal(nome) {
+  console.log(`💡 ${nome}, revise suas habilidades faltantes e atualize seu plano de estudos.`);
+  console.log(`📊 Total de análises realizadas nesta sessão: ${contarAnalise()}`);
+}
