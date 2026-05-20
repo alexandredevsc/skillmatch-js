@@ -50,7 +50,7 @@ const vagas = [
   new VagaFrontEnd(4, "DevHouse",     "Front-End Trainee",           ["HTML","CSS","JavaScript","GitHub","Kanban"],                       2200, "Remoto",     "Trainee"),
 ];
 
-  // ── RF13 ─ CLOSURE: contador ────────────────────────────────PAREI AQUI
+  // ── RF13 ─ CLOSURE: contador ────────────────────────────────
 function criarContadorDeAnalises() {
   let total = 0;
   return function () { total++; return total; };
