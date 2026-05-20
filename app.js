@@ -93,3 +93,19 @@ function classificar(pct) {
   else if (pct >= 50) return { texto: "Média compatibilidade", classe: "cl-mid",  barClass: "fill-mid"  };
   else                return { texto: "Baixa compatibilidade", classe: "cl-low",  barClass: "fill-low"  };
 }
+
+/**
+ * RF08 — map: gera array com resultado de cada vaga
+ * RF08 — every: verifica se candidato atende 100% dos requisitos
+ */
+function analisarVagas(candidatoObj, vagas) {
+  return vagas.map((vaga) => {
+    const pct         = calcularCompatibilidade(candidatoObj.habilidades, vaga.requisitos);
+    const encontradas = habilidadesEncontradas(candidatoObj.habilidades, vaga.requisitos);
+    const faltantes   = habilidadesFaltantes(candidatoObj.habilidades, vaga.requisitos);
+    const atendeTotal = vaga.requisitos.every((r) =>
+      normalizar(candidatoObj.habilidades).includes(r.toLowerCase())
+    );
+    return { vaga, pct, encontradas, faltantes, atendeTotal };
+  });
+}
