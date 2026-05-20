@@ -173,3 +173,8 @@ async function iniciarSistema() {
   console.log("\n📚 RECOMENDAÇÃO DE ESTUDO:");
   console.log(`   ${recomendacao}`);
   console.log("=".repeat(60));
+
+  
+  // RF12 — callback
+  finalizarAnalise(candidato.nome, exibirMensagemFinal);
+}
