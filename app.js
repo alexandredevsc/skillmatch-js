@@ -336,3 +336,10 @@ async function executarAnalise() {
     loader.classList.remove("active");
   }
 }
+
+// ── LIVE PREVIEW ao digitar ──────────────────────────────────
+["inputNome", "inputExp", "inputSkills"].forEach((id) => {
+  document.getElementById(id).addEventListener("input", () =>
+    atualizarPreview(lerCandidato())
+  );
+});
