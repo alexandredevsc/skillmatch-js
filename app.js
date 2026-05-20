@@ -109,3 +109,10 @@ function analisarVagas(candidatoObj, vagas) {
     return { vaga, pct, encontradas, faltantes, atendeTotal };
   });
 }
+
+/**
+ * RF06 — reduce: encontra a vaga com maior compatibilidade
+ */
+function melhorVaga(resultados) {
+  return resultados.reduce((best, cur) => (cur.pct > best.pct ? cur : best));
+}
