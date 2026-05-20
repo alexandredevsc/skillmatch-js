@@ -19,3 +19,17 @@ class Vaga {
     return `[${this.modalidade}] ${this.cargo} na ${this.empresa} — R$ ${this.salario.toLocaleString("pt-BR")}/mês`;
   }
 }
+
+// ── RF10 ─ HERANÇA ──────────────────────────────────────────
+class VagaFrontEnd extends Vaga {
+  constructor(id, empresa, cargo, requisitos, salario, modalidade, nivel) {
+    super(id, empresa, cargo, requisitos, salario, modalidade);
+    this.nivel = nivel;
+  }
+  exibirNivel() {
+    return `Nível: ${this.nivel}`;
+  }
+  exibirResumo() {
+    return `${super.exibirResumo()} | ${this.exibirNivel()}`;
+  }
+}
