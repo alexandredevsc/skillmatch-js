@@ -67,3 +67,12 @@ function habilidadesEncontradas(habilidades, requisitos) {
     normalizar(habilidades).includes(r.toLowerCase())
   );
 }
+
+/**
+ * RF05 + RF08 — filter: habilidades da vaga que o candidato NÃO possui
+ */
+function habilidadesFaltantes(habilidades, requisitos) {
+  return requisitos.filter(
+    (r) => !normalizar(habilidades).includes(r.toLowerCase())
+  );
+}
