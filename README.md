@@ -9,7 +9,7 @@
 
 ---
 
-## Sobre o projeto
+## Sobre o projeto - Atual
 
 O **SkillMatch JS** é um simulador que compara as habilidades de um candidato com os requisitos de vagas fictícias de Front-End Júnior. O projeto foi desenvolvido como Mini-Projeto Avaliativo do Módulo 01 do curso de Desenvolvedor Front-End React.
 
