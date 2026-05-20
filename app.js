@@ -58,3 +58,12 @@ const contarAnalise = criarContadorDeAnalises();
  * RF08 — map
  */
 const normalizar = (arr) => arr.map((h) => h.toLowerCase().trim());
+
+/**
+ * RF08 — filter: habilidades da vaga que o candidato possui
+ */
+function habilidadesEncontradas(habilidades, requisitos) {
+  return requisitos.filter((r) =>
+    normalizar(habilidades).includes(r.toLowerCase())
+  );
+}
