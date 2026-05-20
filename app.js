@@ -13,3 +13,9 @@ class Vaga {
     this.salario   = salario;
     this.modalidade = modalidade;
   }
+
+  // RF11 ─ uso do this dentro de método
+  exibirResumo() {
+    return `[${this.modalidade}] ${this.cargo} na ${this.empresa} — R$ ${this.salario.toLocaleString("pt-BR")}/mês`;
+  }
+}
