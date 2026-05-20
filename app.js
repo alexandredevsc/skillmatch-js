@@ -185,3 +185,34 @@ function atualizarPreview(candidatoObj) {
     .map((h) => `<span class="skill-chip">${h}</span>`)
     .join("");
 }
+
+// ── RENDERIZA STATS ─────────────────────────────────────────
+function renderStats(resultados, candidatoObj) {
+  // RF08 — reduce: média de compatibilidade
+  const media = Math.round(
+    resultados.reduce((s, r) => s + r.pct, 0) / resultados.length
+  );
+  // RF08 — filter: vagas com alta compat
+  const altasCompat = resultados.filter((r) => r.pct >= 80).length;
+
+  const statsEl = document.getElementById("statsRow");
+  statsEl.innerHTML = `
+    <div class="stat-card">
+      <span class="stat-value" style="color:var(--accent)">${resultados.length}</span>
+      <span class="stat-label">Vagas analisadas</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" style="color:var(--accent2)">${candidatoObj.habilidades.length}</span>
+      <span class="stat-label">Suas habilidades</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" style="color:var(--warn)">${media}%</span>
+      <span class="stat-label">Média de compat.</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" style="color:var(--accent)">${altasCompat}</span>
+      <span class="stat-label">Alta compat. (≥80%)</span>
+    </div>
+  `;
+  requestAnimationFrame(() => statsEl.classList.add("visible"));
+}
