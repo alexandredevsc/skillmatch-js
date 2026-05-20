@@ -56,3 +56,11 @@ function criarContadorDeAnalises() {
   return function () { total++; return total; };
 }
 const contarAnalise = criarContadorDeAnalises();
+
+// ── FUNÇÕES AUXILIARES ─────────────────────────────────────
+
+// RF08 — map + filter: habilidades encontradas
+function habilidadesEncontradas(habilidades, requisitos) {
+  const normalizadas = habilidades.map((h) => h.toLowerCase().trim());
+  return requisitos.filter((r) => normalizadas.includes(r.toLowerCase()));
+}
