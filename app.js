@@ -141,3 +141,18 @@ function buscarVagasSimuladas() {
     setTimeout(() => resolve(vagasBase), 1200);
   });
 }
+
+
+/**
+ * RF12 — Callback: ação pós-análise
+ */
+function finalizarAnalise(nome, callback) {
+  console.log("✅ Análise finalizada para:", nome);
+  callback(nome);
+}
+
+function exibirMensagemFinal(nome) {
+  const num = contarAnalise();
+  console.log(`💡 ${nome}, revise suas habilidades faltantes.`);
+  console.log(`📊 Análise nº ${num} realizada nesta sessão.`);
+}
