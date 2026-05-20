@@ -83,3 +83,18 @@ function classificarCompatibilidade(percentual) {
   else if (percentual >= 50) return "🟡 Média compatibilidade";
   else                       return "🔴 Baixa compatibilidade";
 }
+
+// RF08 — map: gera resultados de cada vaga
+// RF08 — every: verifica 100% dos requisitos
+function analisarTodasAsVagas(candidatoObj, listaVagas) {
+  return listaVagas.map((vaga) => {
+    const percentual  = calcularCompatibilidade(candidatoObj.habilidades, vaga.requisitos);
+    const encontradas = habilidadesEncontradas(candidatoObj.habilidades, vaga.requisitos);
+    const faltantes   = habilidadesFaltantes(candidatoObj.habilidades, vaga.requisitos);
+    const classificacao = classificarCompatibilidade(percentual);
+    const atendeTotal = vaga.requisitos.every((r) =>
+      candidatoObj.habilidades.map((h) => h.toLowerCase()).includes(r.toLowerCase())
+    );
+    return { vaga, percentual, encontradas, faltantes, classificacao, atendeTotal };
+  });
+}
