@@ -156,3 +156,12 @@ function exibirMensagemFinal(nome) {
   console.log(`💡 ${nome}, revise suas habilidades faltantes.`);
   console.log(`📊 Análise nº ${num} realizada nesta sessão.`);
 }
+
+// ── LEITURA DOS INPUTS ──────────────────────────────────────
+function lerCandidato() {
+  const nome  = document.getElementById("inputNome").value.trim() || "Candidato";
+  const exp   = parseInt(document.getElementById("inputExp").value) || 0;
+  const raw   = document.getElementById("inputSkills").value;
+  const habilidades = raw.split(",").map((h) => h.trim()).filter(Boolean);
+  return { nome, area: "Front-End", habilidades, experienciaMeses: exp };
+}
