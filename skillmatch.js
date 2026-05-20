@@ -22,10 +22,10 @@ class vaga {
         this.salario = salario;
         this.modalidade = modalidade;
     }
-
-    exibirResumo(){
-        return `[${this.modalidade}] ${this.cargo} na ${this.empresa} - R$ ${this.salario.toLocaleString('pt-BR')}/mês`;
-    }
+ // RF11 — uso do this
+     exibirResumo() {
+    return `[${this.modalidade}] ${this.cargo} na ${this.empresa} — R$ ${this.salario.toLocaleString("pt-BR")}/mês`;
+  }
 }
 
 
