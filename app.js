@@ -84,3 +84,12 @@ function calcularCompatibilidade(habilidades, requisitos) {
   const atendidos = habilidadesEncontradas(habilidades, requisitos).length;
   return Math.round((atendidos / requisitos.length) * 100);
 }
+
+/**
+ * RF04 — classifica compatibilidade com if-else
+ */
+function classificar(pct) {
+  if (pct >= 80) return { texto: "Alta compatibilidade",  classe: "cl-high", barClass: "fill-high" };
+  else if (pct >= 50) return { texto: "Média compatibilidade", classe: "cl-mid",  barClass: "fill-mid"  };
+  else                return { texto: "Baixa compatibilidade", classe: "cl-low",  barClass: "fill-low"  };
+}
