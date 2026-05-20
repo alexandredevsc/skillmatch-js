@@ -116,3 +116,19 @@ function analisarVagas(candidatoObj, vagas) {
 function melhorVaga(resultados) {
   return resultados.reduce((best, cur) => (cur.pct > best.pct ? cur : best));
 }
+
+/**
+ * RF07 — recomendação de estudo
+ * RF08 — reduce: agrega e deduplicação de habilidades faltantes
+ */
+function gerarRecomendacao(resultados) {
+  const unicas = resultados.reduce((acc, r) => {
+    r.faltantes.forEach((h) => { if (!acc.includes(h)) acc.push(h); });
+    return acc;
+  }, []);
+
+  if (unicas.length === 0) {
+    return "🎉 Você atende todos os requisitos das vagas analisadas!";
+  }
+  return `Priorize estudar: <strong>${unicas.join(", ")}</strong>. Esses conteúdos aparecem nas vagas analisadas.`;
+}
