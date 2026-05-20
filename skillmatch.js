@@ -129,3 +129,19 @@ function exibirMensagemFinal(nome) {
   console.log(`💡 ${nome}, revise suas habilidades faltantes e atualize seu plano de estudos.`);
   console.log(`📊 Total de análises realizadas nesta sessão: ${contarAnalise()}`);
 }
+
+// ── RF14 ─ PROMISE + ASYNC/AWAIT ─────────────────────────────
+function buscarVagasSimuladas() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(vagas), 1000);
+  });
+}
+
+async function iniciarSistema() {
+  console.log("⏳ Carregando vagas do servidor...");
+  const vagasCarregadas = await buscarVagasSimuladas();
+  console.log(`✅ ${vagasCarregadas.length} vagas carregadas com sucesso!\n`);
+
+  const resultados  = analisarTodasAsVagas(candidato, vagasCarregadas);
+  const melhorVaga  = encontrarMelhorVaga(resultados);
+  const recomendacao = gerarRecomendacao(resultados);
