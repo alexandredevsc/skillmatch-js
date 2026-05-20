@@ -301,3 +301,38 @@ function renderResults(resultados, best, recomendacao) {
     });
   });
 }
+
+// ── RF14 ─ ASYNC/AWAIT: função principal ─────────────────────
+async function executarAnalise() {
+  const btn    = document.getElementById("btnAnalisar");
+  const loader = document.getElementById("loader");
+
+  const candidatoObj = lerCandidato();
+  atualizarPreview(candidatoObj);
+
+  btn.disabled = true;
+  loader.classList.add("active");
+  document.getElementById("statsRow").classList.remove("visible");
+  document.getElementById("resultsSection").classList.remove("visible");
+  document.getElementById("resultsSection").innerHTML = "";
+
+  try {
+    // RF14 — await da Promise simulada
+    const vagasCarregadas = await buscarVagasSimuladas();
+    console.log(`✅ ${vagasCarregadas.length} vagas carregadas!`);
+
+    const resultados   = analisarVagas(candidatoObj, vagasCarregadas);
+    const best         = melhorVaga(resultados);
+    const recomendacao = gerarRecomendacao(resultados);
+
+    renderStats(resultados, candidatoObj);
+    renderResults(resultados, best, recomendacao);
+
+    // RF12 — callback pós-análise
+    finalizarAnalise(candidatoObj.nome, exibirMensagemFinal);
+
+  } finally {
+    btn.disabled = false;
+    loader.classList.remove("active");
+  }
+}
