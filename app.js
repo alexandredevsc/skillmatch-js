@@ -51,3 +51,10 @@ function criarContadorDeAnalises() {
   };
 }
 const contarAnalise = criarContadorDeAnalises();
+
+// ── FUNÇÕES AUXILIARES ─────────────────────────────────────
+/**
+ * Normaliza array de strings para lowercase
+ * RF08 — map
+ */
+const normalizar = (arr) => arr.map((h) => h.toLowerCase().trim());
