@@ -165,3 +165,23 @@ function lerCandidato() {
   const habilidades = raw.split(",").map((h) => h.trim()).filter(Boolean);
   return { nome, area: "Front-End", habilidades, experienciaMeses: exp };
 }
+
+// ── ATUALIZA PREVIEW DO CANDIDATO ───────────────────────────
+function atualizarPreview(candidatoObj) {
+  document.getElementById("displayName").textContent = candidatoObj.nome;
+  document.getElementById("displayMeta").textContent =
+    `${candidatoObj.area} · ${candidatoObj.experienciaMeses} mês(es) de experiência`;
+
+  const initials = candidatoObj.nome
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .substring(0, 2)
+    .toUpperCase();
+  document.getElementById("avatarEl").textContent = initials;
+
+  const skillsEl = document.getElementById("displaySkills");
+  skillsEl.innerHTML = candidatoObj.habilidades
+    .map((h) => `<span class="skill-chip">${h}</span>`)
+    .join("");
+}
