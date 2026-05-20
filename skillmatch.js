@@ -178,3 +178,6 @@ async function iniciarSistema() {
   // RF12 — callback
   finalizarAnalise(candidato.nome, exibirMensagemFinal);
 }
+
+// Inicializa
+iniciarSistema();
