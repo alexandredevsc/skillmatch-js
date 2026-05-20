@@ -105,3 +105,16 @@ function encontrarMelhorVaga(resultados) {
     atual.percentual > melhor.percentual ? atual : melhor
   );
 }
+
+// RF07 — recomendação + RF08 — reduce
+function gerarRecomendacao(resultados) {
+  const todasFaltantes = resultados.reduce((acc, r) => {
+    r.faltantes.forEach((h) => { if (!acc.includes(h)) acc.push(h); });
+    return acc;
+  }, []);
+
+  if (todasFaltantes.length === 0) {
+    return "Parabéns! Você atende todos os requisitos das vagas analisadas. 🎉";
+  }
+  return `Priorize estudar: ${todasFaltantes.join(", ")}. Esses conteúdos aparecem nas vagas analisadas.`;
+}
