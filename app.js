@@ -216,3 +216,88 @@ function renderStats(resultados, candidatoObj) {
   `;
   requestAnimationFrame(() => statsEl.classList.add("visible"));
 }
+
+// ── RENDERIZA CARDS DE VAGAS ─────────────────────────────── 
+function renderResults(resultados, best, recomendacao) {
+  const section = document.getElementById("resultsSection");
+
+  // RF08 — find: busca vaga por ID
+  const vagaEspecifica = vagasBase.find((v) => v.id === 1);
+  console.log("🔍 Vaga encontrada por ID 1:", vagaEspecifica.exibirResumo());
+
+  const cardsHTML = resultados.map((r, i) => {
+    const { texto, classe, barClass } = classificar(r.pct);
+    const isBest = r.vaga.id === best.vaga.id;
+    return `
+      <div class="job-card ${isBest ? "best" : ""}" style="animation-delay:${i * 0.08}s">
+        <div class="job-card-header">
+          <div>
+            <div class="company-name">${r.vaga.empresa}</div>
+            <div class="job-title">${r.vaga.cargo}</div>
+          </div>
+          ${isBest ? `<span class="best-badge">⭐ Melhor match</span>` : ""}
+        </div>
+
+        <div>
+          <div class="compat-label">
+            <span>Compatibilidade</span>
+            <span>${r.pct}%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill ${barClass}" data-width="${r.pct}" style="width:0%"></div>
+          </div>
+          <div class="classification ${classe}">${texto}</div>
+        </div>
+
+        <div class="skill-section">
+          <div class="skill-row">
+            <span class="skill-row-label">✅ ok</span>
+            ${r.encontradas.map((h) => `<span class="tag tag-ok">${h}</span>`).join("") || "<span style='color:var(--txt-muted);font-size:11px'>Nenhuma</span>"}
+          </div>
+          <div class="skill-row">
+            <span class="skill-row-label">❌ faltam</span>
+            ${r.faltantes.map((h) => `<span class="tag tag-miss">${h}</span>`).join("") || "<span style='color:var(--accent);font-size:11px'>Nenhuma 🎉</span>"}
+          </div>
+        </div>
+
+        <div class="job-meta">
+          <span class="meta-chip">${r.vaga.modalidade}</span>
+          <span class="meta-chip">R$ ${r.vaga.salario.toLocaleString("pt-BR")}</span>
+          <span class="meta-chip">${r.vaga.nivel}</span>
+        </div>
+      </div>`;
+  }).join("");
+
+  section.innerHTML = `
+    <p class="section-label">// Resultados da análise</p>
+    <div class="results-grid">${cardsHTML}</div>
+
+    <p class="section-label">// Melhor compatibilidade</p>
+    <div class="best-banner">
+      <span class="trophy">🏆</span>
+      <div class="best-info">
+        <div class="best-company">${best.vaga.empresa}</div>
+        <div class="best-role">${best.vaga.cargo}</div>
+        <div class="best-compat">Compatibilidade: ${best.pct}% · ${best.vaga.modalidade} · R$ ${best.vaga.salario.toLocaleString("pt-BR")}</div>
+      </div>
+      <div style="font-size:13px;color:var(--txt-muted)">
+        ${best.atendeTotal
+          ? "✅ Você atende 100% dos requisitos!"
+          : `Faltam: <strong style="color:var(--danger)">${best.faltantes.join(", ")}</strong>`}
+      </div>
+    </div>
+
+    <p class="section-label">// Plano de estudos recomendado</p>
+    <div class="recommendation">
+      <h3>📚 Recomendação</h3>
+      <p>${recomendacao}</p>
+    </div>
+  `;
+
+  requestAnimationFrame(() => {
+    section.classList.add("visible");
+    document.querySelectorAll(".progress-fill").forEach((el) => {
+      setTimeout(() => { el.style.width = el.dataset.width + "%"; }, 150);
+    });
+  });
+}
