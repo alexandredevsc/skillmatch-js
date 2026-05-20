@@ -343,3 +343,7 @@ async function executarAnalise() {
     atualizarPreview(lerCandidato())
   );
 });
+
+// ── INICIALIZAÇÃO ────────────────────────────────────────────
+atualizarPreview(lerCandidato());
+executarAnalise();
