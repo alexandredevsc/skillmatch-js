@@ -64,3 +64,9 @@ function habilidadesEncontradas(habilidades, requisitos) {
   const normalizadas = habilidades.map((h) => h.toLowerCase().trim());
   return requisitos.filter((r) => normalizadas.includes(r.toLowerCase()));
 }
+
+// RF05 + RF08 — filter: habilidades faltantes
+function habilidadesFaltantes(habilidades, requisitos) {
+  const normalizadas = habilidades.map((h) => h.toLowerCase().trim());
+  return requisitos.filter((r) => !normalizadas.includes(r.toLowerCase()));
+}
