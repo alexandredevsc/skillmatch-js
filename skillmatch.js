@@ -122,7 +122,7 @@ function gerarRecomendacao(resultados) {
 // ── RF12 ─ CALLBACK ──────────────────────────────────────────
 function finalizarAnalise(nomeCandidato, callback) {
   console.log("\n✅ Análise finalizada para:", nomeCandidato);
-  callback(nomeCandidato);
+  callback(nomeCandidato);  
 }
 
 function exibirMensagemFinal(nome) {
