@@ -165,5 +165,5 @@ docs/readme-video             ← documentação e vídeo
 Desenvolvido por **[Seu Nome]** — Turma 01/02 · Módulo 01 · Semana 06  
 Curso: Desenvolvedor Front-End React · QP 300h Síncrono
 
-📺 [Vídeo de apresentação](https://seu-link-aqui)  
-📋 [Quadro Kanban](https://seu-link-aqui)
+📺 [Vídeo de apresentação]https://www.youtube.com/watch?v=4aiDHsVSyVw
+📋 [Quadro Kanban] https://trello.com/b/JUvCusXW/quadro-kanban-skillmatch-js
